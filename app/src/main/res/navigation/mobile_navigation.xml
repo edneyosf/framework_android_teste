@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_postagem">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.edneyosf.android.teste.ui.home.HomeFragment"
+        android:id="@+id/navigation_postagem"
+        android:name="com.edneyosf.android.teste.ui.postagem.PostagemFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_postagem" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.edneyosf.android.teste.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_album"
+        android:name="com.edneyosf.android.teste.ui.album.AlbumFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_album" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.edneyosf.android.teste.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_todo"
+        android:name="com.edneyosf.android.teste.ui.todo.TodoFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_todo" />
 </navigation>

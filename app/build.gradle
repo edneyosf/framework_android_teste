@@ -54,6 +54,7 @@ dependencies {
   def junit = '4.+'
   def junitAndroid = '1.1.3'
   def expresso = '3.4.0'
+  def room = "2.3.0"
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation "androidx.core:core-ktx:$core"
@@ -67,6 +68,9 @@ dependencies {
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel"
   implementation "androidx.navigation:navigation-fragment-ktx:$fragment"
   implementation "androidx.navigation:navigation-ui-ktx:$ui"
+  implementation "androidx.room:room-runtime:$room"
+
+  annotationProcessor "androidx.room:room-compiler:$room"
 
   testImplementation "junit:junit:$junit"
 
