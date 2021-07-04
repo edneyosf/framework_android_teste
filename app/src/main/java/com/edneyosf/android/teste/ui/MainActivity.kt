@@ -1,4 +1,4 @@
-package com.edneyosf.android.teste
+package com.edneyosf.android.teste.ui
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.edneyosf.android.teste.R
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 
