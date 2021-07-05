@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.edneyosf.android.teste.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostagemFragment : Fragment() {
 
   private lateinit var homeViewModel: PostagemViewModel
+  private val viewModel by viewModel<PostagemViewModel>()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     homeViewModel =

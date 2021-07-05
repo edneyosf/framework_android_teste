@@ -5,11 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.edneyosf.android.teste.ConfigApp
+import com.edneyosf.android.teste.database.dao.AlbumDao
 import com.edneyosf.android.teste.database.dao.PostDao
+import com.edneyosf.android.teste.database.dao.TodoDao
+import com.edneyosf.android.teste.database.entity.AlbumEntity
 import com.edneyosf.android.teste.database.entity.PostEntity
+import com.edneyosf.android.teste.database.entity.TodoEntity
 
 @Database(
-  entities = [PostEntity::class],
+  entities = [PostEntity::class, AlbumEntity::class, TodoEntity::class],
   version = ConfigApp.versionDatabase, exportSchema = false
 )
 abstract class DatabaseApp : RoomDatabase() {
@@ -32,4 +36,6 @@ abstract class DatabaseApp : RoomDatabase() {
   }
 
   abstract fun postDao(): PostDao
+  abstract fun albumDao(): AlbumDao
+  abstract fun todoDao(): TodoDao
 }
