@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_postagem">
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/mobile_navigation"
+  app:startDestination="@+id/navigation_postagem">
 
-    <fragment
-        android:id="@+id/navigation_postagem"
-        android:name="com.edneyosf.android.teste.ui.postagem.PostagemFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_postagem" />
+  <fragment
+    android:id="@+id/navigation_postagem"
+    android:name="com.edneyosf.android.teste.ui.postagem.PostagemFragment"
+    tools:layout="@layout/fragment_postagem" />
 
-    <fragment
-        android:id="@+id/navigation_album"
-        android:name="com.edneyosf.android.teste.ui.album.AlbumFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_album" />
+  <fragment
+    android:id="@+id/navigation_album"
+    android:name="com.edneyosf.android.teste.ui.album.AlbumFragment"
+    tools:layout="@layout/fragment_album" />
 
-    <fragment
-        android:id="@+id/navigation_todo"
-        android:name="com.edneyosf.android.teste.ui.todo.TodoFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_todo" />
+  <fragment
+    android:id="@+id/navigation_todo"
+    android:name="com.edneyosf.android.teste.ui.todo.TodoFragment"
+    tools:layout="@layout/fragment_todo" />
 </navigation>

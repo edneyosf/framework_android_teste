@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".ui.postagem.PostagemFragment">
+<layout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <data>
+    <variable name="viewModel" type="com.edneyosf.android.teste.ui.postagem.PostagemViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.postagem.PostagemFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_postagem"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

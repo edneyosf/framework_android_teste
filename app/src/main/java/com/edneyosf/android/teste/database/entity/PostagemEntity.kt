@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.Gson
 
-@Entity(tableName = "post")
-data class PostEntity(
+@Entity(tableName = "postagem")
+data class PostagemEntity(
   @PrimaryKey(autoGenerate = true) val id: Int?,
   @ColumnInfo(name = "userId") val userId: Int,
   @ColumnInfo(name = "title") val title: String,
@@ -16,8 +16,8 @@ data class PostEntity(
   fun toJson() = Gson().toJson(this)
 
   companion object{
-    fun fromJson(jsonString: String) = Gson().fromJson(jsonString, PostEntity::class.java)
+    fun fromJson(jsonString: String) = Gson().fromJson(jsonString, PostagemEntity::class.java)
   }
 
-  override fun toString() = "(PostEntity){id=$id,  userId=$userId, title='$title', body='$body'}"
+  override fun toString() = "(PostagemEntity){id=$id,  userId=$userId, title='$title', body='$body'}"
 }

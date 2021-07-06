@@ -4,17 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.edneyosf.android.teste.R
+import com.edneyosf.android.teste.databinding.FragmentTodoBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TodoFragment : Fragment() {
 
-  private lateinit var notificationsViewModel: TodoViewModel
+  private val viewModel by viewModel<TodoViewModel>()
+  private lateinit var binding: FragmentTodoBinding
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    notificationsViewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
-    val root = inflater.inflate(R.layout.fragment_todo, container, false)
-    return root
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_todo, container, false)
+
+    binding.viewModel = viewModel
+    binding.lifecycleOwner = this
+
+    return binding.root
   }
 }

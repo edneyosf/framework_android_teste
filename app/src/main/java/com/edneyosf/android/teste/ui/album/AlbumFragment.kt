@@ -4,17 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.edneyosf.android.teste.R
+import com.edneyosf.android.teste.databinding.FragmentAlbumBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumFragment : Fragment() {
 
-  private lateinit var dashboardViewModel: AlbumViewModel
+  private val viewModel by viewModel<AlbumViewModel>()
+  private lateinit var binding: FragmentAlbumBinding
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    dashboardViewModel = ViewModelProvider(this).get(AlbumViewModel::class.java)
-    val root = inflater.inflate(R.layout.fragment_album, container, false)
-    return root
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_album, container, false)
+
+    binding.viewModel = viewModel
+    binding.lifecycleOwner = this
+
+    return binding.root
   }
 }
