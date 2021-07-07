@@ -27,18 +27,16 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
   }
 
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-  fun actionBar(){
-    supportActionBar?.hide()
-  }
-
-  @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   fun initView(){
     setContentView(R.layout.activity_main)
 
-    supportActionBar?.hide()
     val navView: BottomNavigationView = findViewById(R.id.nav_view)
     val navController = findNavController(R.id.nav_host_fragment)
 
+    navController.addOnDestinationChangedListener {
+        _, _, _ ->
+      supportActionBar?.title = navController.currentDestination?.label
+    }
     navView.setupWithNavController(navController)
   }
 }

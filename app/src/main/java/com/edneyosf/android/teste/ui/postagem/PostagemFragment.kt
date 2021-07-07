@@ -1,6 +1,7 @@
 package com.edneyosf.android.teste.ui.postagem
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,11 @@ class PostagemFragment : Fragment() {
 
   private val viewModel by viewModel<PostagemViewModel>()
   private lateinit var binding: FragmentPostagemBinding
+  private lateinit var adapter: PostagemAdapter
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postagem, container, false)
-    val adapter = PostagemAdapter()
+    adapter = PostagemAdapter()
 
     binding.viewModel = viewModel
     binding.lifecycleOwner = this
@@ -27,5 +29,16 @@ class PostagemFragment : Fragment() {
     binding.rvPostagem.adapter = adapter
 
     return binding.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.getAllCountries()
+    viewModel.countriesList.observe(viewLifecycleOwner, {
+      if (it.isNotEmpty() && it != null) {
+        Log.d("Postagem", it.toString())
+        adapter.postData(it)
+      }
+    })
   }
 }

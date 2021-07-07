@@ -1,6 +1,6 @@
 <resources>
   <string name="app_name">Android Teste</string>
-  <string name="title_home">Postagens</string>
-  <string name="title_dashboard">Albums</string>
-  <string name="title_notifications">Todos</string>
+  <string name="title_postagem">Postagens</string>
+  <string name="title_album">Albums</string>
+  <string name="title_todos">Todos</string>
 </resources>

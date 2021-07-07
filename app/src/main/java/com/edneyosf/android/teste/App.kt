@@ -14,6 +14,8 @@ class App : Application() {
       modules(
         databaseModule,
         networkModule,
+        apiModule,
+        repositoryModule,
         viewModelModule
       )
     }

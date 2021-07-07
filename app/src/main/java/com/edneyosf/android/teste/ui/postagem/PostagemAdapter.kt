@@ -23,10 +23,10 @@ class PostagemAdapter : RecyclerView.Adapter<PostagemAdapter.PostagemVH>(){
   }
 
   override fun onBindViewHolder(holder: PostagemVH, position: Int) {
-
+    holder.binding.model = data[position]
   }
 
-  override fun getItemCount() = 20
+  override fun getItemCount() = data.size
 
-  class PostagemVH(binding: PostagemItemBinding): RecyclerView.ViewHolder(binding.root)
+  class PostagemVH(val binding: PostagemItemBinding): RecyclerView.ViewHolder(binding.root)
 }

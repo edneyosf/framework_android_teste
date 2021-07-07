@@ -9,15 +9,18 @@
   <fragment
     android:id="@+id/navigation_postagem"
     android:name="com.edneyosf.android.teste.ui.postagem.PostagemFragment"
+    android:label="@string/title_postagem"
     tools:layout="@layout/fragment_postagem" />
 
   <fragment
     android:id="@+id/navigation_album"
     android:name="com.edneyosf.android.teste.ui.album.AlbumFragment"
+    android:label="@string/title_album"
     tools:layout="@layout/fragment_album" />
 
   <fragment
     android:id="@+id/navigation_todo"
     android:name="com.edneyosf.android.teste.ui.todo.TodoFragment"
+    android:label="@string/title_todos"
     tools:layout="@layout/fragment_todo" />
 </navigation>
