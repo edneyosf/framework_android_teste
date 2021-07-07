@@ -10,9 +10,10 @@ import kotlinx.coroutines.launch
 
 class PostagemViewModel(private val repository : PostagemRepository) : ViewModel() {
 
-  val showLoading = ObservableBoolean()
+  val showLoading = ObservableBoolean() // Esconder/exibir progresso
   val postagemList = MutableLiveData<List<PostagemEntity>>()
 
+  // Consumindo postagens
   fun getAllPostagem() {
     showLoading.set(true)
     viewModelScope.launch {

@@ -14,6 +14,7 @@ interface TodoRepository {
 
 class TodoRepositoryImpl(private val api: TodoApi, private val context: Context, private val dao: TodoDao) : TodoRepository{
 
+  // Cosumindo dados por API
   override suspend fun getAllTodo(): List<TodoEntity> {
     if (NetworkManager.isOnline(context)) {
       return try {
@@ -34,6 +35,7 @@ class TodoRepositoryImpl(private val api: TodoApi, private val context: Context,
     }
   }
 
+  // Cosumindo dados em cache (database)
   private suspend fun getTodoCache(): List<TodoEntity> {
     return withContext(Dispatchers.IO) {
       dao.getAll()

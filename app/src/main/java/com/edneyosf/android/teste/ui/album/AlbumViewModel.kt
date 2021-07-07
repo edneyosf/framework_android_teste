@@ -9,9 +9,11 @@ import com.edneyosf.android.teste.repository.AlbumRepository
 import kotlinx.coroutines.launch
 
 class AlbumViewModel(private val repository : AlbumRepository) : ViewModel() {
-  val showLoading = ObservableBoolean()
+
+  val showLoading = ObservableBoolean() // Esconder/exibir progresso
   val albumList = MutableLiveData<List<AlbumEntity>>()
 
+  // Consumindo albums
   fun getAllAlbum() {
     showLoading.set(true)
     viewModelScope.launch {

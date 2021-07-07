@@ -10,9 +10,10 @@ import kotlinx.coroutines.launch
 
 class TodoViewModel(private val repository : TodoRepository) : ViewModel() {
 
-  val showLoading = ObservableBoolean()
+  val showLoading = ObservableBoolean() // Esconder/exibir progresso
   val postagemList = MutableLiveData<List<TodoEntity>>()
 
+  // Consumindo todos
   fun getAllTodo() {
     showLoading.set(true)
     viewModelScope.launch {

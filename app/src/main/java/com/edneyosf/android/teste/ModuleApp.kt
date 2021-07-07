@@ -23,6 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+// Requisições com Retrofit
 val networkModule = module {
 
   fun provideHttpClient(): OkHttpClient {
@@ -48,6 +49,7 @@ val networkModule = module {
   single { provideRetrofit(get(), ConfigApp.baseUrl) }
 }
 
+// Api
 val apiModule = module {
 
   fun providePostagemApi(retrofit: Retrofit): PostagemApi {
@@ -67,6 +69,7 @@ val apiModule = module {
   single { provideTodoApi(get()) }
 }
 
+// Repository
 val repositoryModule = module {
 
   fun providePostagemRepository(api: PostagemApi, context: Context, dao : PostagemDao): PostagemRepository {
@@ -86,6 +89,7 @@ val repositoryModule = module {
   single { provideTodoRepository(get(), androidContext(), get()) }
 }
 
+// Banco de dados
 val databaseModule = module {
   fun provideDatabase(application: Application): DatabaseApp {
     return Room.databaseBuilder(application, DatabaseApp::class.java, ConfigApp.nameDatabase)
@@ -111,6 +115,7 @@ val databaseModule = module {
   single { provideTodoDao(get()) }
 }
 
+// ViewModel
 val viewModelModule = module {
   viewModel { PostagemViewModel(get()) }
   viewModel { AlbumViewModel(get()) }

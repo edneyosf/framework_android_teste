@@ -33,7 +33,7 @@ class AlbumFragment : Fragment() {
     binding.rvAlbum.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     binding.rvAlbum.adapter = adapter
 
-    viewModel.getAllAlbum()
+    viewModel.getAllAlbum() // Consumindo albums
     viewModel.albumList.observe(viewLifecycleOwner, {
       if (it.isNotEmpty() && it != null) {
         adapter.postData(it)

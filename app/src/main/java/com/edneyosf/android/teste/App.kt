@@ -9,6 +9,7 @@ class App : Application() {
   override fun onCreate() {
     super.onCreate()
 
+    // Injeção de dependência com Koin
     startKoin {
       androidContext(this@App)
       modules(

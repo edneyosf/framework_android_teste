@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
   <data>
     <variable name="model" type="com.edneyosf.android.teste.database.entity.TodoEntity" />
   </data>
 
   <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
+    android:layout_marginTop="@dimen/item_margin_top"
+    android:layout_marginBottom="@dimen/item_margin_bottom"
+    android:layout_marginStart="@dimen/item_margin_start"
+    android:layout_marginEnd="@dimen/item_margin_end"
+    android:layout_marginLeft="@dimen/item_margin_start"
+    android:layout_marginRight="@dimen/item_margin_end"
     android:orientation="horizontal">
 
     <CheckBox
@@ -27,7 +28,7 @@
       android:layout_height="wrap_content"
       android:maxLines="1"
       android:ellipsize="end"
-      android:textSize="20sp"
+      android:textSize="@dimen/title_text_size"
       android:text="@{model.title}" />
 
   </LinearLayout>

@@ -14,6 +14,7 @@ interface PostagemRepository {
 
 class PostagemRepositoryImpl(private val api: PostagemApi, private val context: Context, private val dao: PostagemDao) : PostagemRepository{
 
+  // Cosumindo dados por API
   override suspend fun getAllPostagem(): List<PostagemEntity> {
     if (isOnline(context)) {
       return try {
@@ -34,6 +35,7 @@ class PostagemRepositoryImpl(private val api: PostagemApi, private val context: 
     }
   }
 
+  // Cosumindo dados em cache (database)
   private suspend fun getPostagemCache(): List<PostagemEntity> {
     return withContext(Dispatchers.IO) {
       dao.getAll()

@@ -7,6 +7,12 @@ import android.net.NetworkInfo
 import android.os.Build
 
 object NetworkManager {
+
+  /**
+   * Verifica o status da conexão com internet
+   *
+   * @return 'true' para conexão com internet
+   */
   fun isOnline(context: Context): Boolean {
     var result = false
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?

@@ -33,7 +33,7 @@ class TodoFragment : Fragment() {
     binding.rvTodo.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     binding.rvTodo.adapter = adapter
 
-    viewModel.getAllTodo()
+    viewModel.getAllTodo() // Consumindo todos
     viewModel.postagemList.observe(viewLifecycleOwner, {
       if (it.isNotEmpty() && it != null) {
         adapter.postData(it)

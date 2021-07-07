@@ -33,7 +33,7 @@ class PostagemFragment : Fragment() {
     binding.rvPostagem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     binding.rvPostagem.adapter = adapter
 
-    viewModel.getAllPostagem()
+    viewModel.getAllPostagem() // Consumindo postagens
     viewModel.postagemList.observe(viewLifecycleOwner, {
       if (it.isNotEmpty() && it != null) {
         adapter.postData(it)

@@ -1,4 +1,10 @@
 <resources>
   <dimen name="activity_horizontal_margin">16dp</dimen>
   <dimen name="activity_vertical_margin">16dp</dimen>
+  <dimen name="item_margin_top">10dp</dimen>
+  <dimen name="item_margin_bottom">10dp</dimen>
+  <dimen name="item_margin_start">15dp</dimen>
+  <dimen name="item_margin_end">15dp</dimen>
+  <dimen name="item_margin_body">5dp</dimen>
+  <dimen name="title_text_size">20sp</dimen>
 </resources>

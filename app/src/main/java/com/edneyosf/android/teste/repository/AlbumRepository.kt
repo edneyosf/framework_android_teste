@@ -14,6 +14,7 @@ interface AlbumRepository {
 
 class AlbumRepositoryImpl(private val api: AlbumApi, private val context: Context, private val dao: AlbumDao) : AlbumRepository{
 
+  // Cosumindo dados por API
   override suspend fun getAllAlbum(): List<AlbumEntity> {
     if (NetworkManager.isOnline(context)) {
       return try {
@@ -34,6 +35,7 @@ class AlbumRepositoryImpl(private val api: AlbumApi, private val context: Contex
     }
   }
 
+  // Cosumindo dados em cache (database)
   private suspend fun getAlbumCache(): List<AlbumEntity> {
     return withContext(Dispatchers.IO) {
       dao.getAll()
