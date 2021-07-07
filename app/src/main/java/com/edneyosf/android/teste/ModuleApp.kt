@@ -3,9 +3,13 @@ package com.edneyosf.android.teste
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import com.edneyosf.android.teste.api.AlbumApi
 import com.edneyosf.android.teste.api.PostagemApi
 import com.edneyosf.android.teste.database.DatabaseApp
+import com.edneyosf.android.teste.database.dao.AlbumDao
 import com.edneyosf.android.teste.database.dao.PostagemDao
+import com.edneyosf.android.teste.repository.AlbumRepository
+import com.edneyosf.android.teste.repository.AlbumRepositoryImpl
 import com.edneyosf.android.teste.repository.PostagemRepository
 import com.edneyosf.android.teste.repository.PostagemRepositoryImpl
 import com.edneyosf.android.teste.ui.album.AlbumViewModel
@@ -51,7 +55,12 @@ val apiModule = module {
     return retrofit.create(PostagemApi::class.java)
   }
 
+  fun provideAlbumApi(retrofit: Retrofit): AlbumApi {
+    return retrofit.create(AlbumApi::class.java)
+  }
+
   single { providePostagemApi(get()) }
+  single { provideAlbumApi(get()) }
 }
 
 val repositoryModule = module {
@@ -60,7 +69,12 @@ val repositoryModule = module {
     return PostagemRepositoryImpl(api, context, dao)
   }
 
+  fun provideAlbumRepository(api: AlbumApi, context: Context, dao : AlbumDao): AlbumRepository {
+    return AlbumRepositoryImpl(api, context, dao)
+  }
+
   single { providePostagemRepository(get(), androidContext(), get()) }
+  single { provideAlbumRepository(get(), androidContext(), get()) }
 }
 
 val databaseModule = module {
@@ -70,16 +84,21 @@ val databaseModule = module {
       .build()
   }
 
-  fun provideCountriesDao(database: DatabaseApp): PostagemDao {
+  fun providePostagemDao(database: DatabaseApp): PostagemDao {
     return database.postagemDao
   }
 
+  fun provideAlbumDao(database: DatabaseApp): AlbumDao {
+    return database.albumDao
+  }
+
   single { provideDatabase(androidApplication()) }
-  single { provideCountriesDao(get()) }
+  single { providePostagemDao(get()) }
+  single { provideAlbumDao(get()) }
 }
 
 val viewModelModule = module {
   viewModel { PostagemViewModel(get()) }
-  viewModel { AlbumViewModel() }
+  viewModel { AlbumViewModel(get()) }
   viewModel { TodoViewModel() }
 }

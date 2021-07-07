@@ -25,18 +25,18 @@ class PostagemFragment : Fragment() {
     binding.viewModel = viewModel
     binding.lifecycleOwner = this
 
-    binding.rvPostagem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-    binding.rvPostagem.adapter = adapter
-
     return binding.root
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    viewModel.getAllCountries()
-    viewModel.countriesList.observe(viewLifecycleOwner, {
+
+    binding.rvPostagem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+    binding.rvPostagem.adapter = adapter
+
+    viewModel.getAllPostagem()
+    viewModel.postagemList.observe(viewLifecycleOwner, {
       if (it.isNotEmpty() && it != null) {
-        Log.d("Postagem", it.toString())
         adapter.postData(it)
       }
     })

@@ -11,15 +11,15 @@ import kotlinx.coroutines.launch
 class PostagemViewModel(private val repository : PostagemRepository) : ViewModel() {
 
   val showLoading = ObservableBoolean()
-  val countriesList = MutableLiveData<List<PostagemEntity>>()
+  val postagemList = MutableLiveData<List<PostagemEntity>>()
 
-  fun getAllCountries() {
+  fun getAllPostagem() {
     showLoading.set(true)
     viewModelScope.launch {
       val result =  repository.getAllPostagem()
 
       showLoading.set(false)
-      countriesList.value = result
+      postagemList.value = result
     }
   }
 }

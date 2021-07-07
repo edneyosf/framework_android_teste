@@ -22,14 +22,11 @@ class PostagemRepositoryImpl(private val api: PostagemApi, private val context: 
           response.body()?.let {
             withContext(Dispatchers.IO) { dao.addAll(it) }
           }
-          //handleSuccess(response)
           if(response.body().isNullOrEmpty()) listOf() else response.body()!!
         } else {
-          //handleApiError(response)
           listOf()
         }
       } catch (e: Exception) {
-        //AppResult.Error(e)
         listOf()
       }
     } else {

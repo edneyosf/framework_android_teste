@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     super.onCreate(savedInstanceState, persistentState)
     val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+    setContentView(binding.root)
     binding.lifecycleOwner = this
   }
 

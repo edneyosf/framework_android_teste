@@ -23,10 +23,10 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumVH>(){
   }
 
   override fun onBindViewHolder(holder: AlbumVH, position: Int) {
-
+    holder.binding.model = data[position]
   }
 
   override fun getItemCount() = data.size
 
-  class AlbumVH(binding: AlbumItemBinding): RecyclerView.ViewHolder(binding.root)
+  class AlbumVH(val binding: AlbumItemBinding): RecyclerView.ViewHolder(binding.root)
 }

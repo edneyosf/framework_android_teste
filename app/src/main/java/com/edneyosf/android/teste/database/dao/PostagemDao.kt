@@ -13,5 +13,5 @@ interface PostagemDao {
   fun getAll(): List<PostagemEntity>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun addAll(users: List<PostagemEntity>)
+  fun addAll(postagens: List<PostagemEntity>)
 }
