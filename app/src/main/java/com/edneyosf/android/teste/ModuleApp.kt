@@ -5,13 +5,12 @@ import android.content.Context
 import androidx.room.Room
 import com.edneyosf.android.teste.api.AlbumApi
 import com.edneyosf.android.teste.api.PostagemApi
+import com.edneyosf.android.teste.api.TodoApi
 import com.edneyosf.android.teste.database.DatabaseApp
 import com.edneyosf.android.teste.database.dao.AlbumDao
 import com.edneyosf.android.teste.database.dao.PostagemDao
-import com.edneyosf.android.teste.repository.AlbumRepository
-import com.edneyosf.android.teste.repository.AlbumRepositoryImpl
-import com.edneyosf.android.teste.repository.PostagemRepository
-import com.edneyosf.android.teste.repository.PostagemRepositoryImpl
+import com.edneyosf.android.teste.database.dao.TodoDao
+import com.edneyosf.android.teste.repository.*
 import com.edneyosf.android.teste.ui.album.AlbumViewModel
 import com.edneyosf.android.teste.ui.postagem.PostagemViewModel
 import com.edneyosf.android.teste.ui.todo.TodoViewModel
@@ -59,8 +58,13 @@ val apiModule = module {
     return retrofit.create(AlbumApi::class.java)
   }
 
+  fun provideTodoApi(retrofit: Retrofit): TodoApi {
+    return retrofit.create(TodoApi::class.java)
+  }
+
   single { providePostagemApi(get()) }
   single { provideAlbumApi(get()) }
+  single { provideTodoApi(get()) }
 }
 
 val repositoryModule = module {
@@ -73,8 +77,13 @@ val repositoryModule = module {
     return AlbumRepositoryImpl(api, context, dao)
   }
 
+  fun provideTodoRepository(api: TodoApi, context: Context, dao : TodoDao): TodoRepository {
+    return TodoRepositoryImpl(api, context, dao)
+  }
+
   single { providePostagemRepository(get(), androidContext(), get()) }
   single { provideAlbumRepository(get(), androidContext(), get()) }
+  single { provideTodoRepository(get(), androidContext(), get()) }
 }
 
 val databaseModule = module {
@@ -92,13 +101,18 @@ val databaseModule = module {
     return database.albumDao
   }
 
+  fun provideTodoDao(database: DatabaseApp): TodoDao {
+    return database.todoDao
+  }
+
   single { provideDatabase(androidApplication()) }
   single { providePostagemDao(get()) }
   single { provideAlbumDao(get()) }
+  single { provideTodoDao(get()) }
 }
 
 val viewModelModule = module {
   viewModel { PostagemViewModel(get()) }
   viewModel { AlbumViewModel(get()) }
-  viewModel { TodoViewModel() }
+  viewModel { TodoViewModel(get()) }
 }

@@ -23,10 +23,10 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoVH>(){
   }
 
   override fun onBindViewHolder(holder: TodoVH, position: Int) {
-
+    holder.binding.model = data[position]
   }
 
   override fun getItemCount() = data.size
 
-  class TodoVH(binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root)
+  class TodoVH(val binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root)
 }
